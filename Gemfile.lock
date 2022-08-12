@@ -192,9 +192,10 @@ GEM
     thor (1.2.1)
     thread-local (1.1.0)
     tilt (2.0.11)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbo-rails (1.1.1)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     web-console (4.2.0)
@@ -234,11 +235,12 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6)
+  redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   stimulus_reflex (~> 3.4)
-  turbolinks (~> 5)
+  turbo-rails
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
