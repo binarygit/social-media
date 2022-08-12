@@ -1,6 +1,9 @@
 %h1 Signup
 
-= form_with model: @user do |f|
+- if @user.errors.any?
+  = render 'errors', errors: @user.errors.full_messages
+
+= form_with model: @user, data: { turbo: false, remote: true } do |f|
   = f.label :first_name
   = f.text_field :first_name
   = f.label :last_name
