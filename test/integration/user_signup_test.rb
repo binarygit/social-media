@@ -14,6 +14,10 @@ class UserSignupTest < ActionDispatch::IntegrationTest
                            password: ""
                          }
                        }
+      assert_response :unprocessable_entity
+      assert_template 'users/new'
+      assert_select '#error_explanation'
+      assert_select '#error_explanation li', count: 4
     end
   end
 

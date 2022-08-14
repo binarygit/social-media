@@ -14,8 +14,11 @@ gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.4.3'
 
-#Use Turbo
+# Use Turbo
 gem 'turbo-rails'
+
+# Use assert_template in tests
+gem 'rails-controller-testing'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
