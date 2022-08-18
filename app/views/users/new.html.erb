@@ -1,11 +1,9 @@
-<main>
-  <section>
-    <h2>Signup</h2>
-    <% if @user.errors.any? %>
-      <ul id="error_explanation" >
-        <%= render partial: 'error', collection: @user.errors.full_messages %>
-      </ul>
-    <% end %>
-    <%= render "form" %>
-  </section>
-</main>
+<section>
+  <h2>Signup</h2>
+  <% if @user.errors.any? %>
+    <ul id="error_explanation" >
+      <%= render partial: 'error', collection: @user.errors.full_messages %>
+    </ul>
+  <% end %>
+  <%= render "form" %>
+</section>
