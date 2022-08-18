@@ -13,6 +13,9 @@
   <body>
     <%= render "layouts/header" %>
     <main>
+      <% flash.each do |message_type, message| %>
+        <%= tag.div message, class: "flash-#{ message_type }" %>
+      <% end %>
       <%= yield %>
     </main>
   </body>
