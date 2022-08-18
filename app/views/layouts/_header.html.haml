@@ -1,0 +1,11 @@
+%section#header
+  %header FakeBook
+
+  %nav
+    - if logged_in?
+      %ul
+        %li= link_to "Logout", logout_path, method: :delete
+    - else
+      %ul
+        %li= link_to "Login", login_path
+        %li= link_to "Signup", signup_path
