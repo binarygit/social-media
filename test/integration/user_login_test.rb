@@ -1,9 +1,14 @@
 require "test_helper"
 
 class UserLoginTest < ActionDispatch::IntegrationTest
+  def setup
+    @user = users(:Darpan)
+  end
+
   test "login with invalid information" do
     get login_path
     assert_response :success
+    assert_template "sessions/new"
 
     post login_path, params: {
       session: {
@@ -11,6 +16,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
         password: ""
       }
     }
+    assert_template "sessions/new"
     assert_response :unprocessable_entity
     assert_not flash.empty?
   end
@@ -21,11 +27,16 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
     post login_path, params: {
       session: {
-        email: "darpan@darpan.com",
+        email: @user.email,
         password: "foobar"
       }
     }
     assert_response :redirect
-    assert_equal users(:Darpan).id, session[:user_id]
+    assert_equal @user.id, session[:user_id]
+
+    # Logout test
+    delete logout_path
+    assert_nil session[:user_id]
+    assert_not flash.empty?
   end
 end

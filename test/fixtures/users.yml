@@ -3,5 +3,5 @@
 Darpan:
   first_name: Darpan
   last_name: Dahal
-  password_digest: <%= BCrypt::Password.create('foobar') %>
+  password_digest: <%= User.digest('foobar') %>
   email: darpan@darpan.com
