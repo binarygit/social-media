@@ -1,0 +1,25 @@
+<section>
+  <h2>Profile</h2>
+
+  <section>
+    <h3>Details</h3>
+
+    <p>Name: <%= @user.first_name %></p>
+    <%# check whether user is a friend and only then
+      display the email %>
+    <p>Email: <%= @user.email %></p>
+  </section>
+
+  <section>
+    <h3>Friendship Status</h3>
+
+    <% if current_user.sent_friend_reqs.to(@user) %>
+      <p>Pending....</p>
+    <% elsif current_user.received_friend_reqs.custom_from(@user) %>
+      <%= render 'friend_request', sender: @user %>
+    <% else %>
+      <%= button_to 'Add Friend', friend_requests_path, params: { receiver_id: @user.id } %>
+    <% end %>
+  </section>
+</section>
+

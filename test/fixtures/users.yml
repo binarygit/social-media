@@ -5,3 +5,15 @@ Darpan:
   last_name: Dahal
   password_digest: <%= User.digest('foobar') %>
   email: darpan@darpan.com
+
+Avash:
+  first_name: Avash
+  last_name: Ghimire
+  password_digest: <%= User.digest('foobar') %>
+  email: avash@avash.com
+
+Kritesh:
+  first_name: Kritesh
+  last_name: Neupane
+  password_digest: <%= User.digest('foobar') %>
+  email: kritesh@kritesh.com

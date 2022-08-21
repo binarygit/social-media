@@ -1,0 +1,5 @@
+<% if params[:id].to_i == current_user.id %>
+  <%= render 'profile'  %>
+<% else %>
+  <%= render 'other_profile' %>
+<% end %>

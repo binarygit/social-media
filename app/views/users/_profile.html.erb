@@ -1,0 +1,17 @@
+<section>
+  <h2>Profile</h2>
+
+  <section>
+    <h3>Details</h3>
+    <p>Name: <%= @user.first_name %></p>
+    <p>Email: <%= @user.email %></p>
+  </section>
+
+  <section>
+    <h3>Pending Requests</h3>
+    <ul>
+      <%= render partial: 'friend_request', 
+        collection: @user.friend_req_senders, as: :sender %>
+    </ul>
+  </section>
+</section>
