@@ -1,5 +1,7 @@
-%section#header
-  %header FakeBook
+%section#nav-header
+  %header
+    %h1
+      = link_to 'FakeBook', root_path
 
   %nav
     - if logged_in?
