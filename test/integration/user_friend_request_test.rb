@@ -24,4 +24,19 @@ class UserFriendRequestTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_select 'p', 'Pending....'
   end
+
+  test 'user can become friends' do
+    post login_path, params: {
+      session: {
+        email: users(:Darpan).email,
+        password: "foobar"
+      }
+    }
+
+    assert_difference 'Friendship.count', 2 do
+    post friendships_path, params: {
+      friend_id: users(:Avash).id
+    }
+    end
+  end
 end
