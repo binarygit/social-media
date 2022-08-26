@@ -21,7 +21,7 @@ class UserFriendRequestTest < ActionDispatch::IntegrationTest
   test 'user can become friends' do
     login_as users(:Darpan)
 
-    assert_difference 'Friendship.count', 2 do
+    assert_difference ->{ Friendship.count } => 2, ->{ FriendRequest.count } => -1 do
     post friendships_path, params: {
       friend_id: users(:Avash).id
     }
