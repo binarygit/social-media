@@ -23,7 +23,7 @@ class UserFriendRequestTest < ActionDispatch::IntegrationTest
 
     assert_difference ->{ Friendship.count } => 2, ->{ FriendRequest.count } => -1 do
     post friendships_path, params: {
-      friend_id: users(:Avash).id
+      sender_id: users(:Avash).id
     }
     end
   end
