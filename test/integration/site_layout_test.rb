@@ -9,12 +9,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get root_path
     assert_response :redirect
 
-    post login_path, params: {
-      session: {
-        email: @user.email,
-        password: "foobar"
-      }
-    }
+    login_as @user
 
     get root_path
     assert_response :success
@@ -25,12 +20,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   end
 
   test 'user#show' do
-    post login_path, params: {
-      session: {
-        email: @user.email,
-        password: "foobar"
-      }
-    }
+    login_as @user
 
     get user_path(@user)
     assert_response :success
@@ -45,12 +35,8 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'button', count: 2
 
     # Login as other user and check what he sees
-    post login_path, params: {
-      session: {
-        email: users(:Avash).email,
-        password: "foobar"
-      }
-    }
+    login_as users(:Avash)
+
     get user_path(@user)
     assert_response :success
     assert_select 'h3', 'Friendship Status'

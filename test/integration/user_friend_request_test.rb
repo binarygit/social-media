@@ -3,20 +3,13 @@ require "test_helper"
 class UserFriendRequestTest < ActionDispatch::IntegrationTest
 
   test 'user can send friend requests' do
-    post login_path, params: {
-      session: {
-        email: users(:Kritesh).email,
-        password: "foobar"
-      }
-    }
+    login_as users(:Kritesh)
     
     get user_path(users(:Darpan))
-    assert_response :success
     assert_select 'input[type="submit"]', value: "Add Friend"
+
     assert_difference 'FriendRequest.count' do
-    post friend_requests_path, params: {
-      receiver_id: users(:Darpan).id
-    }
+      send_friend_req(users(:Darpan))
     end
 
     assert_response :redirect
@@ -26,12 +19,7 @@ class UserFriendRequestTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can become friends' do
-    post login_path, params: {
-      session: {
-        email: users(:Darpan).email,
-        password: "foobar"
-      }
-    }
+    login_as users(:Darpan)
 
     assert_difference 'Friendship.count', 2 do
     post friendships_path, params: {

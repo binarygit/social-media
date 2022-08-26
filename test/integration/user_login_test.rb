@@ -25,12 +25,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get login_path
     assert_response :success
 
-    post login_path, params: {
-      session: {
-        email: @user.email,
-        password: "foobar"
-      }
-    }
+    login_as @user
     assert_response :redirect
     assert_equal @user.id, session[:user_id]
 
