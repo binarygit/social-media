@@ -1,6 +1,6 @@
 <li id=<%= dom_id(sender, :friend_request)  %>>
   <p> Name: <%= sender.first_name %> </p>
-  <button>Accept</button>
+  <%= button_to 'Accept', friendships_path, params: { sender_id: sender.id } %>
   <button>Reject</button>
 </li>
 

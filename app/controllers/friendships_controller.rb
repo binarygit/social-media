@@ -9,6 +9,7 @@ class FriendshipsController < ApplicationController
     @sender.friends.create(friend_id: current_user.id)
 
     @friend_req.delete
+    redirect_back fallback_location: root_path
   end
 
   private

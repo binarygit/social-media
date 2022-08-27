@@ -28,11 +28,11 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'p', "Name: #{@user.first_name}"
     assert_select 'p', "Email: #{@user.email}"
     assert_select 'li p', "Name: #{users(:Avash).first_name}"
-    assert_select 'li button', 'Accept'
+    assert_select 'li input', value: 'Accept'
     assert_select 'li button', 'Reject'
 
     get user_path(users(:Avash))
-    assert_select 'button', count: 2
+    assert_select 'button', count: 1
 
     # Login as other user and check what he sees
     login_as users(:Avash)
