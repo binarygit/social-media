@@ -27,19 +27,19 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
     assert_select 'p', "Name: #{@user.first_name}"
     assert_select 'p', "Email: #{@user.email}"
-    assert_select 'li p', "Name: #{users(:Avash).first_name}"
-    assert_select 'li input', value: 'Accept'
-    assert_select 'li button', 'Reject'
+    #assert_select 'li p', "Name: #{users(:Avash).first_name}"
+    #assert_select 'li input', value: 'Accept'
+    #assert_select 'li button', 'Reject'
 
-    get user_path(users(:Avash))
-    assert_select 'button', count: 1
+    #get user_path(users(:Avash))
+    #assert_select 'button', count: 1
 
     # Login as other user and check what he sees
-    login_as users(:Avash)
+    #login_as users(:Avash)
 
-    get user_path(@user)
-    assert_response :success
-    assert_select 'h3', 'Friendship Status'
-    assert_select 'p', text: 'Pending....'
+    #get user_path(@user)
+    #assert_response :success
+    #assert_select 'h3', 'Friendship Status'
+    #assert_select 'p', text: 'Pending....'
   end
 end
